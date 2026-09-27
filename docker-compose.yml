@@ -1,0 +1,16 @@
+﻿services:
+  postgres:
+    image: postgres:18-alpine
+    container_name: electrician-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: electrician
+      POSTGRES_PASSWORD: electrician_dev_password
+      POSTGRES_DB: electrician_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - electrician_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  electrician_postgres_data:
